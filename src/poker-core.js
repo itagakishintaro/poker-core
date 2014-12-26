@@ -40,7 +40,12 @@ poker.core.getHandCategory = function(cards) {
   function pareCheck(cards) {
     $.each(cards, function(i, v) {
       var x = v.rank;
-      $.each(cards, function(i2,v2){
+      var count = 0;
+      $.each(cards, function(i2, v2) {
+        if ((x === v2.rank) && (i != i2)) {
+          count++;
+          return true;
+        }
       });
     });
   }
