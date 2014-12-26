@@ -40,8 +40,17 @@ poker.core.getHandCategory = function(cards) {
   var cardsRanks = [0,0,0,0,0,0,0,0,0,0,0,0,0,0];
   cards.forEach(function(v, i, array){cardsRanks[v.rank] += 1;});
 
-
-  
+  var zeroRenzoku = 0;
+  var oneRenzoku = 0;
+  var straight = false;
+  cardsRanks.forEach(function(v, i, array){
+    if (zeroRenzoku === 8 || oneRenzoku === 5) {straight = true;}
+    if(i !== 0 && v === 0){zeroRenzoku++;} else if(v !== 0){zeroRenzoku = 0;}
+    if(i !== 0 && v === 1){oneRenzoku++;} else if(v !== 1){oneRenzoku = 0;}
+  });
+  if(straight === true){
+    return poker.handCategory.STRAIGHT;
+  }
 
   if( cardsRanks.some(function(v, i, array){return v === 4;}) ){
     return poker.handCategory.FOUR_OF_A_KIND;
@@ -59,12 +68,6 @@ poker.core.getHandCategory = function(cards) {
     return poker.handCategory.ONE_PAIR;
   }
 
-  var zeroRenzoku = 0;
-  var oneRenzoku = 0;
-  cardsRanks.forEach(function(v, i, array){
-    if (zeroRenzoku === 8) {return poker.handCategory.STRAIGHT;}
-    if(i !== 0 && v === 0){zeroRenzoku++;} else if(v !== 0){zeroRenzoku = 0;}
-  });
 
   function pareCheck(cards) {
     $.each(cards, function(i, v) {
