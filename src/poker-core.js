@@ -37,6 +37,10 @@ poker.core = {};
  */
 poker.core.getHandCategory = function(cards) {
   // TODO: ここに処理を実装します。
+  var cardsRanks = [0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+  cards.forEach(function(v, i, array){cardsRanks[v.rank] += 1;});
+  if( cardsRanks.some(function(v, i, array){return v === 2;}) ){return poker.handCategory.ONE_PAIR;}
+
   function pareCheck(cards) {
     $.each(cards, function(i, v) {
       var x = v.rank;
