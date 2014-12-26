@@ -40,6 +40,10 @@ poker.core.getHandCategory = function(cards) {
   var cardsRanks = [0,0,0,0,0,0,0,0,0,0,0,0,0,0];
   cards.forEach(function(v, i, array){cardsRanks[v.rank] += 1;});
 
+  if( cardsRanks.some(function(v, i, array){return v === 4;}) ){
+    return poker.handCategory.FOUR_OF_A_KIND;
+  }
+
   if( cardsRanks.some(function(v, i, array){return v === 3;}) && cardsRanks.some(function(v, i, array){return v === 2;})){
     return poker.handCategory.FULL_HOUSE;
   }
