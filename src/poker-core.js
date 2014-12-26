@@ -49,12 +49,24 @@ poker.core.getHandCategory = function(cards) {
     if(i !== 0 && v === 1){oneRenzoku++;} else if(v !== 1){oneRenzoku = 0;}
   });
   
+  var twoPairCount = 0;
+  cardsRanks.forEach(function(v, i, array){
+    if (v == 2) {
+        
+    }
+  }
 
   var suit = cards[0].suit;
   var flash = true;
-  cards.forEach(function(v, i, array){if(v.suit !== suit){flash = false;}});
+  cards.forEach(function(v){
+    if(v.suit !== suit){
+      flash = false;
+    }
+  });
  
-  if (flash && straight) {return poker.handCategory.STRAIGHT_FLUSH};
+  if (flash && straight) {
+    return poker.handCategory.STRAIGHT_FLUSH
+  };
   if (flash) {return poker.handCategory.FLUSH};
   if(straight){return poker.handCategory.STRAIGHT;}
 
