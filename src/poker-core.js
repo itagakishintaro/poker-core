@@ -38,7 +38,11 @@ poker.core = {};
 poker.core.getHandCategory = function(cards) {
   // TODO: ここに処理を実装します。
   function pareCheck(cards) {
-    $.each(cards, function(i, v) {});
+    $.each(cards, function(i, v) {
+      var x = v.rank;
+      $.each(cards, function(i2,v2){
+      });
+    });
   }
 
   // どの組み合わせにも当てはまらないならば、ハイカードを返す。
