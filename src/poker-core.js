@@ -48,9 +48,15 @@ poker.core.getHandCategory = function(cards) {
     if(i !== 0 && v === 0){zeroRenzoku++;} else if(v !== 0){zeroRenzoku = 0;}
     if(i !== 0 && v === 1){oneRenzoku++;} else if(v !== 1){oneRenzoku = 0;}
   });
-  if(straight === true){
-    return poker.handCategory.STRAIGHT;
-  }
+  
+
+  var suit = cards[0].suit;
+  var flash = true;
+  cards.forEach(function(v, i, array){if(v.suit !== suit){flash = false;}});
+ 
+  if (flash && straight) {return poker.handCategory.STRAIGHT_FLUSH};
+  if (flash) {return poker.handCategory.FLUSH};
+  if(straight){return poker.handCategory.STRAIGHT;}
 
   if( cardsRanks.some(function(v, i, array){return v === 4;}) ){
     return poker.handCategory.FOUR_OF_A_KIND;
