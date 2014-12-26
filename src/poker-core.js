@@ -52,8 +52,13 @@ poker.core.getHandCategory = function(cards) {
   var twoPairCount = 0;
   cardsRanks.forEach(function(v, i, array){
     if (v == 2) {
-        
+      twoPairCount++;
+
     }
+  });
+
+  if(twoPairCount === 2){
+    return poker.handCategory.TWO_PAIR;
   }
 
   var suit = cards[0].suit;
