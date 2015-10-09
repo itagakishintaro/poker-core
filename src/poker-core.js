@@ -65,7 +65,12 @@ poker.core.getHandCategory = function ( cards ) {
     if ( ranks[ 0 ] == 1 && ranks[ 1 ] == 10 && ranks[ 2 ] == 11 && ranks[ 3 ] == 12 && ranks[ 4 ] == 13 ) return poker.handCategory.ROYAL_FLUSH;
     if ( ranks[ 0 ] + 1 == ranks[ 1 ] && ranks[ 1 ] + 1 == ranks[ 2 ] && ranks[ 2 ] + 1 == ranks[ 3 ] && ranks[ 3 ] + 1 == ranks[ 4 ] ) return poker.handCategory.STRAIGHT_FLUSH;
     return poker.handCategory.FLUSH;
+  } else {
+    if ( ranks[ 0 ] == ranks[ 1 ] && ranks[ 1 ] == ranks[ 2 ] && ranks[ 2 ] == ranks[ 3 ] ) {
+      return poker.handCategory.FOUR_OF_A_KIND;
+    }
   }
+
 
   ////5枚のカードが連番で、なおかつ全て同じマークならば、ストレートフラッシュ
   ////同じ数字のカードが4枚あれば、フォー・オブ・ア・カインド
