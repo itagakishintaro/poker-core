@@ -53,7 +53,14 @@ poker.core.getHandCategory = function ( cards ) {
     suits[ i ] = cards[ i ].suit;
     //手札の数字をソートする
     ranks.sort();
+  }
 
+  //フラッシュの判定を行う
+  //suits内の値がすべてsuits[0]と同じだったらフラッシュと判定する
+  for ( var i = 1; i < suits.length; i++ ) {
+    if ( suits[ 0 ] == suits[ i ] ) {
+
+    }
   }
 
 
