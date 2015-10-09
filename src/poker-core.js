@@ -38,13 +38,21 @@ poker.core = {};
 poker.core.getHandCategory = function ( cards ) {
   // TODO: ここに処理を実装します。
 
+  //以降実装する人へ伝言
+  //カードの数字はソートして扱います。…扱いたい。
+  //カードのマークはフラッシュの判定にしか使われないので
+  //ソートしません。あしからずご了承ください。
+
   //配列の宣言
   var ranks = []; //番号です！
   var suits = []; //マークです！
 
   for ( var i = 0; i < cards.length; i++ ) {
     //ここに手札（cardsの配列）を格納してください！
-
+    ranks[ i ] = cards[ i ].rank;
+    suits[ i ] = cards[ i ].suit;
+    //手札の数字をソートする
+    ranks.sort();
 
   }
 
